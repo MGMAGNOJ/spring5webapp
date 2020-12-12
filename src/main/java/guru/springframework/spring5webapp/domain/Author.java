@@ -1,28 +1,21 @@
 package guru.springframework.spring5webapp.domain;
 
+import javax.persistence.*;
 import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
 
 @Entity
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
     private String fistName;
     private String lasName;
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
 
-
     public Author() {
     }
-
 
     public Author(String fistName, String lasName, Set<Book> books) {
         this.fistName = fistName;
@@ -31,16 +24,15 @@ public class Author {
     }
 
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-
     public String getFistName() {
-        return this.fistName;
+        return fistName;
     }
 
     public void setFistName(String fistName) {
@@ -48,7 +40,7 @@ public class Author {
     }
 
     public String getLasName() {
-        return this.lasName;
+        return lasName;
     }
 
     public void setLasName(String lasName) {
@@ -56,12 +48,10 @@ public class Author {
     }
 
     public Set<Book> getBooks() {
-        return this.books;
+        return books;
     }
 
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
-
-
 }
