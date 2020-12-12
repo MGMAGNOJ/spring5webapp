@@ -56,6 +56,18 @@ public class Author {
         this.books = books;
     }
 
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", fistName='" + getFistName() + "'" +
+            ", lasName='" + getLasName() + "'" +
+            ", books='" + getBooks() + "'" +
+            "}";
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
