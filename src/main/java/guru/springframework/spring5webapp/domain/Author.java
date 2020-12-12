@@ -1,7 +1,13 @@
 package guru.springframework.spring5webapp.domain;
 
-import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Author {
@@ -55,4 +61,34 @@ public class Author {
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", fistName='" + getFistName() + "'" +
+            ", lasName='" + getLasName() + "'" +
+            ", books='" + getBooks() + "'" +
+            "}";
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Author)) {
+            return false;
+        }
+        Author author = (Author) o;
+        return Objects.equals(id, author.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    
 }
