@@ -26,21 +26,6 @@ public class BootStrapData implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        Author eric = new Author("Eric", "Evans");
-        Book ddd = new Book("Domain Driven Design","123123");
-        eric.getBooks().add(ddd);
-        ddd.getAuthors().add(eric);
-
-        authorRepository.save(eric);
-        bookRepository.save(ddd);
-
-        Author rod = new Author("Rod", "Johnson");
-        Book noEJB = new Book("J2EE","456456");
-        eric.getBooks().add(ddd);
-        ddd.getAuthors().add(eric);
-
-        authorRepository.save(rod);
-        bookRepository.save(noEJB);
 
         Publisher agata = new Publisher();
         agata.setName("Magno");
@@ -49,15 +34,33 @@ public class BootStrapData implements CommandLineRunner{
         agata.setCity("Blumenau");
         agata.setState("Santa Catarina");
         agata.setZIPCode("88075000");
-
         publisherRepository.save(agata);
 
+        Author eric = new Author("Eric", "Evans");
+        Book ddd = new Book("Domain Driven Design","123123");
+        eric.getBooks().add(ddd);
+        ddd.getAuthors().add(eric);
+        ddd.setPublisher(agata);
+        agata.getBooks().add(ddd);
+        authorRepository.save(eric);
+        bookRepository.save(ddd);
+
+        Author rod = new Author("Rod", "Johnson");
+        Book noEJB = new Book("J2EE","456456");
+        rod.getBooks().add(noEJB);
+        noEJB.getAuthors().add(rod);
+        noEJB.setPublisher(agata);
+        agata.getBooks().add(noEJB);
+
+        authorRepository.save(rod);
+        bookRepository.save(noEJB);
+
+        publisherRepository.save(agata);
 
         System.out.println("Started Bootstrap");
         System.out.println("Number of Books " + bookRepository.count());
         System.out.println("My Publisher Count: " + publisherRepository.count());
-
-
+        System.out.println("Agata Publisher " + agata.getBooks().size());
 
     }
 }
