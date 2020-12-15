@@ -17,16 +17,16 @@ public class Author {
 
     private Long id;
     private String fistName;
-    private String lasName;
+    private String lastName;
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
     public Author() {
     }
 
-    public Author(String fistName, String lasName) {
+    public Author(String fistName, String lastName) {
         this.fistName = fistName;
-        this.lasName = lasName;
+        this.lastName = lastName;
 
     }
 
@@ -46,12 +46,12 @@ public class Author {
         this.fistName = fistName;
     }
 
-    public String getLasName() {
-        return lasName;
+    public String getlastName() {
+        return lastName;
     }
 
-    public void setLasName(String lasName) {
-        this.lasName = lasName;
+    public void setlastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Set<Book> getBooks() {
@@ -68,7 +68,7 @@ public class Author {
         return "{" +
             " id='" + getId() + "'" +
             ", fistName='" + getFistName() + "'" +
-            ", lasName='" + getLasName() + "'" +
+            ", lastName='" + getlastName() + "'" +
             ", books='" + getBooks() + "'" +
             "}";
     }
